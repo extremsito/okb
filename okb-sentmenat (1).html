@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKB Sentmenat — Frankfurts & Burgers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0d0b;
+    --cream: #f5f0e8;
+    --gold: #e8a020;
+    --gold-dark: #b87a10;
+    --red: #c9312a;
+    --red-light: #e8453d;
+    --charcoal: #1c1a16;
+    --mid: #3a3730;
+    --muted: #7a7060;
+    --border: rgba(255,255,255,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 68px;
+    background: rgba(14,13,11,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; color: var(--black);
+    letter-spacing: 0.5px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 2px;
+    color: var(--cream);
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--cream);
+    opacity: 0.7; transition: opacity .2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--black);
+    padding: 9px 22px; border-radius: 4px;
+    font-size: 13px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 5vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,160,32,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,49,42,0.1) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--cream) 1px, transparent 1px), linear-gradient(90deg, var(--cream) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content { position: relative; max-width: 780px; }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    border: 1px solid rgba(232,160,32,0.4);
+    padding: 6px 18px; border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero p {
+    font-size: 16px; line-height: 1.7;
+    color: rgba(245,240,232,0.65);
+    max-width: 480px; margin: 0 auto 40px;
+  }
+
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    padding: 14px 32px; border-radius: 4px;
+    font-weight: 500; font-size: 14px; letter-spacing: 1px;
+    text-transform: uppercase; text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1px solid rgba(245,240,232,0.3); color: var(--cream);
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
+    text-decoration: none; transition: border-color .2s, transform .15s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+  .hero-strip {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--red), var(--gold), transparent);
+    opacity: 0.6;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 5vw; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1; letter-spacing: 2px;
+    margin-bottom: 48px;
+  }
+
+  /* ─── ESPECIALITATS DEL MES ─── */
+  .especial-section {
+    background: var(--charcoal);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .especial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .especial-card {
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 28px;
+    position: relative; overflow: hidden;
+    transition: border-color .25s, transform .2s;
+  }
+  .especial-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+  .especial-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--red));
+  }
+
+  .especial-badge {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    background: rgba(232,160,32,0.12);
+    color: var(--gold); border: 1px solid rgba(232,160,32,0.3);
+    padding: 4px 10px; border-radius: 2px; margin-bottom: 16px;
+  }
+
+  .especial-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .especial-card p {
+    font-size: 13px; line-height: 1.6;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 20px;
+  }
+
+  .especial-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; color: var(--gold); letter-spacing: 1px;
+  }
+
+  .especial-note {
+    font-size: 11px; color: var(--muted); margin-top: 6px;
+  }
+
+  /* ─── CARTA ─── */
+  .carta-section { background: var(--black); }
+
+  .carta-tabs {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .carta-tab {
+    font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 12px 20px;
+    cursor: pointer; border: none; background: none;
+    color: rgba(245,240,232,0.4);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .2s, border-color .2s;
+  }
+  .carta-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .carta-tab:hover:not(.active) { color: var(--cream); }
+
+  .carta-panel { display: none; }
+  .carta-panel.active { display: block; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2px;
+  }
+
+  .menu-item {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background .2s, border-color .2s;
+  }
+  .menu-item:hover { background: rgba(255,255,255,0.03); border-color: var(--border); }
+
+  .menu-item-info { flex: 1; }
+
+  .menu-item-name {
+    font-size: 15px; font-weight: 500; margin-bottom: 4px;
+  }
+
+  .menu-item-desc {
+    font-size: 12px; color: rgba(245,240,232,0.45); line-height: 1.5;
+  }
+
+  .menu-item-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; color: var(--gold);
+    white-space: nowrap; padding-top: 2px;
+  }
+
+  /* Suplements */
+  .suplements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2px;
+  }
+
+  .suplement-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 16px;
+    border-radius: 4px;
+    transition: background .2s;
+  }
+  .suplement-item:hover { background: rgba(255,255,255,0.03); }
+
+  .suplement-name { font-size: 13px; color: rgba(245,240,232,0.75); }
+  .suplement-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; color: var(--gold);
+  }
+
+  /* OK PARTY */
+  .party-box {
+    background: var(--charcoal);
+    border: 1px solid rgba(232,160,32,0.3);
+    border-radius: 8px;
+    padding: 40px;
+    display: flex; align-items: center; gap: 48px;
+    flex-wrap: wrap;
+    position: relative; overflow: hidden;
+  }
+  .party-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 0% 50%, rgba(232,160,32,0.06) 0%, transparent 70%);
+  }
+  .party-content { position: relative; }
+  .party-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px; line-height: 1; color: var(--gold);
+  }
+  .party-price span { font-size: 36px; }
+  .party-includes {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+    position: relative;
+  }
+  .party-includes li {
+    font-size: 14px; color: rgba(245,240,232,0.75);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .party-includes li::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+
+  /* Postres */
+  .postres-list {
+    display: flex; flex-direction: column; gap: 2px;
+    max-width: 520px;
+  }
+
+  /* ─── RESERVES ─── */
+  .reserves-section {
+    background: var(--charcoal);
+    border-top: 1px solid var(--border);
+  }
+
+  .reserves-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .reserves-layout { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .reserves-info p {
+    font-size: 16px; line-height: 1.7;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 32px;
+  }
+
+  .info-block {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  .info-row {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 14px; color: rgba(245,240,232,0.8);
+  }
+
+  .info-icon {
+    width: 36px; height: 36px;
+    background: rgba(232,160,32,0.1);
+    border: 1px solid rgba(232,160,32,0.2);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  /* Form */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 520px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(245,240,232,0.5); font-weight: 500;
+  }
+
+  input, select, textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: rgba(232,160,32,0.6);
+  }
+  select option { background: var(--charcoal); }
+  textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    margin-top: 8px;
+    background: var(--gold); color: var(--black);
+    border: none; cursor: pointer;
+    width: 100%; padding: 16px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background .2s;
+  }
+  .form-submit:hover { background: var(--gold-dark); }
+
+  .form-success {
+    display: none;
+    text-align: center; padding: 32px 0;
+    color: var(--gold);
+  }
+
+  /* ─── CONTACTE ─── */
+  .contacte-section { background: var(--black); }
+
+  .contacte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .contacte-card {
+    background: var(--charcoal);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: border-color .25s;
+  }
+  .contacte-card:hover { border-color: rgba(232,160,32,0.4); }
+
+  .contacte-icon {
+    font-size: 28px; margin-bottom: 14px; display: block;
+  }
+
+  .contacte-card h4 {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); font-weight: 500; margin-bottom: 8px;
+  }
+
+  .contacte-card p, .contacte-card a {
+    font-size: 15px; font-weight: 400;
+    color: var(--cream); text-decoration: none;
+    transition: color .2s;
+  }
+  .contacte-card a:hover { color: var(--gold); }
+
+  .mapa-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 20px;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border-bottom: 1px solid rgba(232,160,32,0.3);
+    padding-bottom: 2px;
+    transition: border-color .2s;
+  }
+  .mapa-link:hover { border-color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    border-top: 1px solid var(--border);
+    padding: 40px 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  footer p { font-size: 13px; color: var(--muted); }
+
+  .social-links {
+    display: flex; gap: 20px;
+  }
+
+  .social-links a {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: color .2s;
+  }
+  .social-links a:hover { color: var(--gold); }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 5vw;
+  }
+
+  /* Carta subtitle */
+  .carta-subtitle {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin: 32px 0 16px; padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .carta-subtitle:first-child { border-top: none; margin-top: 0; }
+
+  /* Tipo burger selector */
+  .burger-types {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .burger-type-badge {
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: rgba(245,240,232,0.6);
+    padding: 5px 12px; border-radius: 2px;
+  }
+
+  /* notification toast */
+  .toast {
+    position: fixed; bottom: 32px; right: 32px; z-index: 999;
+    background: var(--gold); color: var(--black);
+    padding: 14px 24px; border-radius: 4px;
+    font-size: 14px; font-weight: 500;
+    transform: translateY(80px); opacity: 0;
+    transition: transform .3s, opacity .3s;
+    pointer-events: none;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inici" class="nav-logo">
+    <div class="nav-logo-icon">OKB</div>
+    <span class="nav-logo-text">OKB Sentmenat</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#especialitats">Especialitats</a></li>
+    <li><a href="#carta">La Carta</a></li>
+    <li><a href="#reserves">Reserves</a></li>
+    <li><a href="#contacte">Contacte</a></li>
+  </ul>
+  <a href="#reserves" class="nav-cta">Reservar taula</a>
+</nav>
+
+<!-- HERO -->
+<section id="inici" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">📍 Sentmenat, Barcelona</div>
+    <h1>Frankfurts<br><span>&amp;</span> Burgers</h1>
+    <p>L'autèntic sabor de carrer amb productes de qualitat. Frankfurts artesanals, hamburgueses sucoses i molt més.</p>
+    <div class="hero-btns">
+      <a href="#carta" class="btn-primary">Veure la Carta</a>
+      <a href="#reserves" class="btn-outline">Reservar taula</a>
+    </div>
+  </div>
+  <div class="hero-strip"></div>
+</section>
+
+<!-- ESPECIALITATS DEL MES -->
+<section id="especialitats" class="especial-section">
+  <div class="section-label">🌟 Cada mes una nova sorpresa</div>
+  <div class="section-title">Especialitats<br>del Mes</div>
+  <div class="especial-grid">
+
+    <div class="especial-card">
+      <div class="especial-badge">Novetat Març</div>
+      <h3>OK Primavera</h3>
+      <p>Burger 180g de vedella, formatge brie fos, ceba caramel·litzada, rúcula fresca i salsa de maduixes amb mostassa de Dijon.</p>
+      <div class="especial-price">13,50€</div>
+      <div class="especial-note">Disponible fins a final de mes</div>
+    </div>
+
+    <div class="especial-card">
+      <div class="especial-badge">Frankfurt Especial</div>
+      <h3>Xistorra Miel</h3>
+      <p>Xistorra artesanal de la terra, mel de romaní, formatge de cabra cremoset, pa brioche torrat i patates fregides de casa.</p>
+      <div class="especial-price">9,50€</div>
+      <div class="especial-note">Producte de temporada</div>
+    </div>
+
+    <div class="especial-card">
+      <div class="especial-badge">Per Compartir</div>
+      <h3>Tabla OK March</h3>
+      <p>Combinació especial de morros, teques de formatge, aletes de pollastre i OK nuggets. Per a 2-3 persones.</p>
+      <div class="especial-price">22,00€</div>
+      <div class="especial-note">Per a 2–3 persones</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CARTA -->
+<section id="carta" class="carta-section">
+  <div class="section-label">Tots els nostres plats</div>
+  <div class="section-title">La Carta</div>
+
+  <div class="burger-types">
+    <span class="burger-type-badge">🐄 Vedella</span>
+    <span class="burger-type-badge">🐔 Pollastre</span>
+    <span class="burger-type-badge">🐔 Pollastre Crispy</span>
+    <span class="burger-type-badge">🌱 Vegana</span>
+  </div>
+
+  <div class="carta-tabs">
+    <button class="carta-tab active" data-tab="frankfurts">Frankfurts</button>
+    <button class="carta-tab" data-tab="hamburgueses">Hamburgueses</button>
+    <button class="carta-tab" data-tab="entrepans">Entrepans</button>
+    <button class="carta-tab" data-tab="compartir">Per Compartir</button>
+    <button class="carta-tab" data-tab="sandwiches">Sandwiches</button>
+    <button class="carta-tab" data-tab="suplements">Suplements</button>
+    <button class="carta-tab" data-tab="postres">Postres &amp; Party</button>
+  </div>
+
+  <!-- FRANKFURTS -->
+  <div class="carta-panel active" id="tab-frankfurts">
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Frankfurt</div></div><div class="menu-item-price">4,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Cervela</div></div><div class="menu-item-price">4,80€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Bratswurst</div></div><div class="menu-item-price">4,80€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Pikantwurst</div></div><div class="menu-item-price">4,80€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Mexicowurst</div></div><div class="menu-item-price">4,80€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Malaguenya</div></div><div class="menu-item-price">4,80€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Xistorra</div></div><div class="menu-item-price">5,00€</div></div>
+    </div>
+  </div>
+
+  <!-- HAMBURGUESES -->
+  <div class="carta-panel" id="tab-hamburgueses">
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Clàssica</div><div class="menu-item-desc">Burger 180g, enciam, tomàquet, formatge cheddar i ceba fregida</div></div><div class="menu-item-price">10,30€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Cabra</div><div class="menu-item-desc">Burger 180g, rúcula, tomàquet, rulo de cabra i ceba fregida</div></div><div class="menu-item-price">11,95€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Castell</div><div class="menu-item-desc">Burger 180g, enciam, tomàquet, formatge edam, ceba fregida, bacó i ou ferrat</div></div><div class="menu-item-price">12,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Francesa</div><div class="menu-item-desc">Burger 180g, enciam, ceba fregida, xampinyons i salsa roquefort</div></div><div class="menu-item-price">12,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Double Smash</div><div class="menu-item-desc">Pa brioche, doble d'hamburguesa smash, doble de formatge cheddar, doble de bacó i ceba</div></div><div class="menu-item-price">12,40€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Tumara</div><div class="menu-item-desc">Burger 180g, formatge edam, tomàquet deshidratat, rúcula i oli d'alfàbrega</div></div><div class="menu-item-price">12,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Mexicana</div><div class="menu-item-desc">Burger 180g, enciam, tomàquet, formatge cheddar, bacó, jalapeños i salsa picant</div></div><div class="menu-item-price">12,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Vegana</div><div class="menu-item-desc">Burger 180g, verdures, enciam, tomàquet i ceba fregida</div></div><div class="menu-item-price">11,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK 4 Formatges</div><div class="menu-item-desc">Burger 180g, ceba fregida, formatge edam, cheddar, cabra i roquefort</div></div><div class="menu-item-price">13,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OKB ⭐</div><div class="menu-item-desc">Doble burger farcida de ceba caramel·litzada, formatge de cabra, ceba cruixent i patates fregides</div></div><div class="menu-item-price">15,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Xistorra</div><div class="menu-item-desc">Xistorra, ou ferrat i ceba cruixent</div></div><div class="menu-item-price">7,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Donut</div><div class="menu-item-desc">Doble Smash, doble cheddar, doble bacó, ou ferrat, pa de donut i patates fregides</div></div><div class="menu-item-price">14,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Dolça</div><div class="menu-item-desc">Burger 180g, rúcula, formatge de cabra, formatge crema, nous i melmelada de pebrots i jalapeños</div></div><div class="menu-item-price">13,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Smash Pulled</div><div class="menu-item-desc">Smash burger, cogombrets, maionesa, pulled pork i ceba cruixent</div></div><div class="menu-item-price">12,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Smash Churri</div><div class="menu-item-desc">Doble Smash, doble de formatge, doble de tomàquet planxat, salsa chumi churri i bites de bacó</div></div><div class="menu-item-price">12,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Jalisco</div><div class="menu-item-desc">Burger 180g, enciam, formatge, guacamole, "pico de gallo" i bites de bacó</div></div><div class="menu-item-price">12,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Jack Daniel's</div><div class="menu-item-desc">Burger 180g, enciam, formatge cheddar, melmelada de bacó i Jack Daniel's i patates fregides</div></div><div class="menu-item-price">14,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK BBQ</div><div class="menu-item-desc">Burger 180g, enciam, tomàquet, formatge cheddar, bacó, anelles de ceba i salsa barbacoa</div></div><div class="menu-item-price">12,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Especial</div><div class="menu-item-desc">Pregunta per ella</div></div><div class="menu-item-price">14,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Burger</div><div class="menu-item-desc">Burger 80g, formatge cheddar i patates fregides</div></div><div class="menu-item-price">7,50€</div></div>
+    </div>
+  </div>
+
+  <!-- ENTREPANS -->
+  <div class="carta-panel" id="tab-entrepans">
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Bacó</div></div><div class="menu-item-price">5,30€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Salsitxes</div></div><div class="menu-item-price">6,90€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Botifarra</div></div><div class="menu-item-price">8,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Llom</div></div><div class="menu-item-price">5,30€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Pit de pollastre</div></div><div class="menu-item-price">6,80€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Pintxo moruno</div></div><div class="menu-item-price">6,90€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Truita francesa</div></div><div class="menu-item-price">4,70€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Serranito</div><div class="menu-item-desc">Llom, pernil país i pebrot</div></div><div class="menu-item-price">6,90€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Campestre</div><div class="menu-item-desc">Pit de pollastre, pebrot i ceba</div></div><div class="menu-item-price">7,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Frankburger</div><div class="menu-item-desc">Burger picada, enciam, tomàquet, ceba crua i formatge cheddar</div></div><div class="menu-item-price">8,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Frankfurt</div><div class="menu-item-desc">Frankfurt, ceba fregida, formatge edam i ceba cruixent</div></div><div class="menu-item-price">7,45€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Fort</div><div class="menu-item-desc">Burger picada, rúcula, salsa rocafort i pernil país</div></div><div class="menu-item-price">8,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Pulled</div><div class="menu-item-desc">Pulled pork, ceba fregida, formatge cruixent i patates fregides</div></div><div class="menu-item-price">11,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Cabrón</div><div class="menu-item-desc">Frankfurt, formatge de cabra, melmelada de pebrot i jalapeños i bites de bacó</div></div><div class="menu-item-price">8,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Bab</div><div class="menu-item-desc">Burger picada, amaniment secret, enciam, tomàquet, ceba, olives, blat de moro, salsa kebab i patates fregides</div></div><div class="menu-item-price">11,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Xistorrano</div><div class="menu-item-desc">Xistorra, pebrot, ou ferrat i formatge parmesà</div></div><div class="menu-item-price">11,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Entrepà Especial</div><div class="menu-item-desc">Pregunta per ell</div></div><div class="menu-item-price">11,00€</div></div>
+    </div>
+  </div>
+
+  <!-- PER COMPARTIR -->
+  <div class="carta-panel" id="tab-compartir">
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Patates fregides</div></div><div class="menu-item-price">4,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Patates braves</div></div><div class="menu-item-price">6,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Búfalas</div><div class="menu-item-desc">Patates fregides, burguer picada, ceba cruixent, ceba crua, pebe i salsa torrada picant</div></div><div class="menu-item-price">7,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Chumicurri</div><div class="menu-item-desc">Patates amb salsitxes i vinagreta de chumi churri</div></div><div class="menu-item-price">7,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Patates OKB</div><div class="menu-item-desc">Patates fregides, bacó i cheddar</div></div><div class="menu-item-price">5,90€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Patates, ou i pernil</div></div><div class="menu-item-price">9,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Anelles de ceba</div></div><div class="menu-item-price">6,95€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Fingers de pollastre</div></div><div class="menu-item-price">7,95€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Nuggets de pollastre</div><div class="menu-item-desc">10 unitats</div></div><div class="menu-item-price">5,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Aletes de pollastre</div><div class="menu-item-desc">4 unitats</div></div><div class="menu-item-price">6,75€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Duo</div><div class="menu-item-desc">Anelles de ceba i fingers de pollastre</div></div><div class="menu-item-price">11,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Combo</div><div class="menu-item-desc">Anelles de ceba, fingers de pollastre i teques de formatge</div></div><div class="menu-item-price">14,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Morros</div></div><div class="menu-item-price">5,45€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Teques de formatge</div></div><div class="menu-item-price">7,95€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Salchipapa</div></div><div class="menu-item-price">6,00€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK Nugget</div><div class="menu-item-desc">6 unitats i patates fregides</div></div><div class="menu-item-price">6,25€</div></div>
+    </div>
+  </div>
+
+  <!-- SANDWICHES -->
+  <div class="carta-panel" id="tab-sandwiches">
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Bikini</div></div><div class="menu-item-price">3,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Bikini amb ou</div><div class="menu-item-desc">Pernil dolç, formatge i ou ferrat</div></div><div class="menu-item-price">4,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Bikini pernil salat</div></div><div class="menu-item-price">4,25€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">OK bo</div><div class="menu-item-desc">Filet de llom de porc rostit, formatge edam i ceba fregida</div></div><div class="menu-item-price">4,50€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Harley Quinn</div><div class="menu-item-desc">Pa d'hamburguesa, ou ferrat, bacó, formatge cheddar i mica de picant</div></div><div class="menu-item-price">6,50€</div></div>
+    </div>
+  </div>
+
+  <!-- SUPLEMENTS -->
+  <div class="carta-panel" id="tab-suplements">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:24px;">Personalitza la teva comanda amb aquests ingredients extra.</p>
+    <div class="suplements-grid">
+      <div class="suplement-item"><span class="suplement-name">Tomàquet rodanxes</span><span class="suplement-price">0,60€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Enciam</span><span class="suplement-price">0,60€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Jalapeños</span><span class="suplement-price">0,80€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Xampinyons</span><span class="suplement-price">1,00€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Pebrot verd</span><span class="suplement-price">1,00€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Bacó</span><span class="suplement-price">1,10€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Formatge edam</span><span class="suplement-price">1,10€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Formatge cheddar</span><span class="suplement-price">1,10€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Pa sense gluten</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Formatge de cabra</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Formatge rocafort</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Formatge parmesà</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Ceba fregida</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Salsa brava</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Ou ferrat</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Allioli</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Ceba caramel·litzada</span><span class="suplement-price">2,00€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Ceba cruixent</span><span class="suplement-price">1,50€</span></div>
+      <div class="suplement-item"><span class="suplement-name">Guacamole</span><span class="suplement-price">1,20€</span></div>
+    </div>
+  </div>
+
+  <!-- POSTRES & PARTY -->
+  <div class="carta-panel" id="tab-postres">
+    <p class="carta-subtitle">Postres</p>
+    <div class="postres-list">
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Pastís de formatge</div></div><div class="menu-item-price">5,10€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Coulant xocolata negra amb gelat</div></div><div class="menu-item-price">5,10€</div></div>
+      <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Coulant de formatge manxec amb gelat</div></div><div class="menu-item-price">6,20€</div></div>
+    </div>
+
+    <p class="carta-subtitle" style="margin-top:48px;">OK Party 🎉</p>
+    <div class="party-box">
+      <div class="party-content">
+        <div class="party-price"><span>9</span>,00€</div>
+        <p style="font-size:12px;color:var(--muted);margin-top:4px;">Per infant</p>
+      </div>
+      <ul class="party-includes">
+        <li>Mini burger / Nuggets</li>
+        <li>Patates fregides</li>
+        <li>Aigua</li>
+        <li>Postres</li>
+        <li>Joguina sorpresa 🎁</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESERVES -->
+<section id="reserves" class="reserves-section">
+  <div class="reserves-layout">
+    <div class="reserves-info">
+      <div class="section-label">Vine a veure'ns</div>
+      <div class="section-title">Fes la<br>Teva Reserva</div>
+      <p>Reserva la teva taula i assegura't el millor lloc. Per a grups grans o celebracions especials, truca'ns directament.</p>
+      <div class="info-block">
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div>
+            <div style="font-weight:500">699 734 787</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Disponible en horari d'obertura</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div style="font-weight:500">Sentmenat, Barcelona</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Segueix-nos @okbsentmenat</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div style="font-weight:500">Dimarts — Dissabte: 18:00 – 23:00</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Diumenge i dilluns tancat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form id="reserva-form" onsubmit="enviarReserva(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="El teu nom" required>
+          </div>
+          <div class="form-group">
+            <label for="tel">Telèfon</label>
+            <input type="tel" id="tel" name="telefon" placeholder="6XX XXX XXX" required>
+          </div>
+          <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required>
+          </div>
+          <div class="form-group">
+            <label for="hora">Hora</label>
+            <select id="hora" name="hora">
+              <option value="">Selecciona hora</option>
+              <option>18:00</option><option>18:30</option><option>19:00</option>
+              <option>19:30</option><option>20:00</option><option>20:30</option>
+              <option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="persones">Persones</label>
+            <select id="persones" name="persones" onchange="checkCapacitat()">
+              <option>1 persona</option><option>2 persones</option><option>3 persones</option>
+              <option>4 persones</option><option>5 persones</option><option>6 persones</option>
+              <option>+ de 6 (truqueu-nos)</option>
+            </select>
+            <div id="capacitat-warning" style="display:none;font-size:12px;color:#e8a020;margin-top:6px;padding:8px 12px;background:rgba(232,160,32,0.08);border:1px solid rgba(232,160,32,0.25);border-radius:4px;">
+              ⚠️ Per a grups grans, la reserva és orientativa. Ens posarem en contacte per confirmar la disponibilitat.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ocasio">Ocasió</label>
+            <select id="ocasio" name="ocasio">
+              <option>Sense ocasió especial</option>
+              <option>Aniversari</option>
+              <option>Celebració</option>
+              <option>Sopar de feina</option>
+              <option>OK Party infantil</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Preferència de lloc</label>
+            <div style="display:flex;gap:12px;margin-top:4px;">
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;text-transform:none;letter-spacing:0;color:var(--cream);font-weight:400;padding:11px 16px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;flex:1;background:rgba(255,255,255,0.04);transition:border-color .2s;" id="lbl-interior">
+                <input type="radio" name="lloc" value="Interior" id="lloc-interior" checked style="width:auto;padding:0;border:none;background:none;accent-color:var(--gold);">
+                🏠 Interior <span style="font-size:11px;color:var(--muted);margin-left:4px">(30 places)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;text-transform:none;letter-spacing:0;color:var(--cream);font-weight:400;padding:11px 16px;border:1px solid rgba(255,255,255,0.12);border-radius:4px;flex:1;background:rgba(255,255,255,0.04);transition:border-color .2s;" id="lbl-terrassa">
+                <input type="radio" name="lloc" value="Terrassa" id="lloc-terrassa" style="width:auto;padding:0;border:none;background:none;accent-color:var(--gold);">
+                ☀️ Terrassa <span style="font-size:11px;color:var(--muted);margin-left:4px">(20 places)</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Preferència de seient</label>
+            <div style="display:flex;gap:12px;margin-top:4px;">
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;letter-spacing:0;text-transform:none;color:var(--cream);font-weight:400;flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:12px 14px;transition:border-color .2s;" id="lbl-interior">
+                <input type="radio" name="zona" value="Interior" checked onchange="selectZona(this)" style="accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;"> 🏠 Interior <span style="font-size:12px;color:var(--muted);margin-left:4px;">(~30 places)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;letter-spacing:0;text-transform:none;color:var(--cream);font-weight:400;flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:12px 14px;transition:border-color .2s;" id="lbl-terrassa">
+                <input type="radio" name="zona" value="Terrassa" onchange="selectZona(this)" style="accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;"> ☀️ Terrassa <span style="font-size:12px;color:var(--muted);margin-left:4px;">(~20 places)</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="notes">Notes addicionals</label>
+            <textarea id="notes" name="notes" placeholder="Al·lèrgies, preferències de taula, peticions especials..."></textarea>
+          </div>
+          <div class="form-group full">
+            <div id="capacity-warning" style="display:none;background:rgba(232,160,32,0.08);border:1px solid rgba(232,160,32,0.35);border-radius:4px;padding:12px 16px;font-size:13px;color:rgba(245,240,232,0.85);line-height:1.5;">
+              ⚠️ <strong>Reserva orientativa:</strong> per a grups grans et confirmarem disponibilitat per telèfon abans de la visita. Si necessites assegurar la plaça, truca'ns al <strong>699 734 787</strong>.
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="form-submit" id="btn-submit">Confirmar reserva</button>
+        <div id="form-sending" style="display:none;text-align:center;padding:16px 0;font-size:14px;color:var(--muted)">Enviant reserva...</div>
+        <div class="form-success" id="form-success">
+          <div style="font-size:32px;margin-bottom:12px">✓</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:8px">Reserva enviada!</div>
+          <div style="font-size:14px;color:var(--muted)">Ens posarem en contacte amb tu aviat per confirmar-la.</div>
+        </div>
+        <div id="form-error" style="display:none;text-align:center;padding:16px;background:rgba(201,49,42,0.1);border:1px solid rgba(201,49,42,0.3);border-radius:4px;font-size:14px;color:#e8453d;margin-top:8px">
+          Hi ha hagut un error. Si us plau, truca'ns al 699 734 787.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACTE -->
+<section id="contacte" class="contacte-section">
+  <div class="section-label">On trobar-nos</div>
+  <div class="section-title">Contacte</div>
+  <div class="contacte-grid">
+    <div class="contacte-card">
+      <span class="contacte-icon">📞</span>
+      <h4>Telèfon</h4>
+      <a href="tel:699734787">699 734 787</a>
+    </div>
+    <div class="contacte-card">
+      <span class="contacte-icon">📸</span>
+      <h4>Instagram</h4>
+      <a href="https://instagram.com/okbsentmenat" target="_blank">@okbsentmenat</a>
+    </div>
+    <div class="contacte-card">
+      <span class="contacte-icon">📍</span>
+      <h4>Adreça</h4>
+      <p>Sentmenat, Barcelona</p>
+      <a href="https://maps.app.goo.gl/BoWdekwV6AiPkeuQA" target="_blank" class="mapa-link">Obrir mapa →</a>
+    </div>
+    <div class="contacte-card">
+      <span class="contacte-icon">🕐</span>
+      <h4>Horaris</h4>
+      <p>Dimarts – Dissabte</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">18:00 – 23:00 · Dg i Dl tancat</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 OKB Sentmenat — Frankfurts & Burgers</p>
+  <div class="social-links">
+    <a href="tel:699734787">📞 699 734 787</a>
+    <a href="https://instagram.com/okbsentmenat" target="_blank">Instagram</a>
+    <a href="https://maps.app.goo.gl/BoWdekwV6AiPkeuQA" target="_blank">Mapa</a>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Reserva enviada!</div>
+
+<script>
+  // Capacity warning
+  function checkCapacitat() {
+    const val = document.getElementById('persones').value;
+    const num = parseInt(val) || 0;
+    const warning = document.getElementById('capacitat-warning');
+    warning.style.display = (num >= 6 || val.includes('+')) ? 'block' : 'none';
+  }
+
+  // Radio button visual feedback
+  document.querySelectorAll('input[name="lloc"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.getElementById('lbl-interior').style.borderColor = document.getElementById('lloc-interior').checked ? 'rgba(232,160,32,0.6)' : 'rgba(255,255,255,0.12)';
+      document.getElementById('lbl-terrassa').style.borderColor = document.getElementById('lloc-terrassa').checked ? 'rgba(232,160,32,0.6)' : 'rgba(255,255,255,0.12)';
+    });
+  });
+  document.getElementById('lbl-interior').style.borderColor = 'rgba(232,160,32,0.6)';
+
+  // Tabs
+  document.querySelectorAll('.carta-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.carta-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.carta-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Form — Formspree integration
+  async function enviarReserva(e) {
+    e.preventDefault();
+    const form = document.getElementById('reserva-form');
+    const btn = document.getElementById('btn-submit');
+    const sending = document.getElementById('form-sending');
+    const success = document.getElementById('form-success');
+    const error = document.getElementById('form-error');
+    const toast = document.getElementById('toast');
+
+    btn.style.display = 'none';
+    sending.style.display = 'block';
+    error.style.display = 'none';
+
+    const data = {
+      nom: document.getElementById('nom').value,
+      telefon: document.getElementById('tel').value,
+      data: document.getElementById('data').value,
+      hora: document.getElementById('hora').value,
+      persones: document.getElementById('persones').value,
+      lloc: document.querySelector('input[name="lloc"]:checked')?.value || 'Interior',
+      ocasio: document.getElementById('ocasio').value,
+      notes: document.getElementById('notes').value,
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/contactoteo0@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      sending.style.display = 'none';
+
+      if (res.ok) {
+        form.querySelectorAll('input,select,textarea').forEach(el => el.style.display = 'none');
+        form.querySelector('.form-grid').style.display = 'none';
+        success.style.display = 'block';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3500);
+      } else {
+        btn.style.display = 'block';
+        error.style.display = 'block';
+      }
+    } catch (err) {
+      sending.style.display = 'none';
+      btn.style.display = 'block';
+      error.style.display = 'block';
+    }
+  }
+
+  // Zona selector highlight
+  function selectZona(radio) {
+    document.getElementById('lbl-interior').style.borderColor = 'rgba(255,255,255,0.12)';
+    document.getElementById('lbl-terrassa').style.borderColor = 'rgba(255,255,255,0.12)';
+    const lbl = radio.value === 'Interior' ? 'lbl-interior' : 'lbl-terrassa';
+    document.getElementById(lbl).style.borderColor = 'rgba(232,160,32,0.6)';
+    checkCapacity();
+  }
+
+  // Capacity warning
+  function checkCapacity() {
+    const persones = document.getElementById('persones').value;
+    const zona = document.querySelector('input[name="zona"]:checked')?.value;
+    const limit = zona === 'Terrassa' ? 20 : 30;
+    const num = parseInt(persones) || 0;
+    const warning = document.getElementById('capacity-warning');
+    warning.style.display = (num >= limit || persones.includes('+')) ? 'block' : 'none';
+  }
+
+  document.getElementById('persones').addEventListener('change', checkCapacity);
+
+  // Init: highlight default radio
+  document.getElementById('lbl-interior').style.borderColor = 'rgba(232,160,32,0.6)';
+  const dateInput = document.getElementById('data');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+  dateInput.value = today;
+
+  // Smooth scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
